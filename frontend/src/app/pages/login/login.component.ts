@@ -3,7 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { LoginRequest } from '../../common/authInterfaces/loginRequest';
 import { AuthService } from '../../services/authServices/auth.service';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-login',

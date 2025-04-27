@@ -157,21 +157,6 @@ namespace Hospital.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.InsertData(
-                table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "321", null, "sudo", "SUDO" });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "123", 0, "poto", "sudo@gmail.com", false, false, null, null, null, "123456", null, false, "poto", false, "sudo" });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUserRoles",
-                columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "321", "123" });
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",

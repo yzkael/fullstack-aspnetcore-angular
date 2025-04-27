@@ -16,39 +16,15 @@ namespace src.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<User>().HasData(
-                new User
-                {
-                    Id = "123",
-                    UserName = "sudo",
-                    Email = "sudo@gmail.com",
-                    PasswordHash = "123456",
-                    ConcurrencyStamp = "poto",
-                    SecurityStamp = "poto"
-                }
-            );
+            builder.Entity<Role>()
+            .Property(r => r.Id).ValueGeneratedOnAdd();
 
-            builder.Entity<Role>().HasData(
-                new Role
-                {
-                    Id = "321",
-                    Name = "sudo",
-                    NormalizedName = "SUDO"
-                }
-            );
-
-
-            builder.Entity<IdentityUserRole<string>>().HasData(
-                new IdentityUserRole<string>
-                {
-                    UserId = "123",
-                    RoleId = "321"
-                }
-            );
-
+            builder.Entity<User>()
+            .Property(u => u.Id)
+            .ValueGeneratedOnAdd();
             base.OnModelCreating(builder);
+
         }
-        public DbSet<User> Userss { get; set; } = null!;
 
 
     }

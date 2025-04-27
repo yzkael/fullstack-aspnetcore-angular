@@ -59,6 +59,7 @@ namespace src.Extensions
         }
         public static void AddDependencyInjections(this IServiceCollection services)
         {
+            services.AddScoped<AppDbInitialiser>();
             services.AddScoped<ITokenServices, TokenServices>();
             services.AddScoped<IAuthServices, AuthServices>();
         }

@@ -1,3 +1,4 @@
+using src.Data;
 using src.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,9 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+await app.InitialiseDatabaseAsync();
+
 app.UseHttpsRedirection();
 app.UseCors("Default");
 app.UseAuthentication();

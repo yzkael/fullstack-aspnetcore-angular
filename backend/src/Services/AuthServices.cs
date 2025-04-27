@@ -30,17 +30,17 @@ namespace src.Services
             //Defaults to .Succeded = false
             LoginResponseData response = new();
 
-            var userFound = await _context.Userss.FirstOrDefaultAsync(u => u.UserName == data.Username);
+            var userFound = await _userManager.FindByEmailAsync(data.Username);
             if (userFound == null)
             {
-                userFound = await _context.Userss.FirstOrDefaultAsync(u => u.Email == data.Username);
+                userFound = await _userManager.FindByNameAsync(data.Username);
                 if (userFound == null)
                 {
                     return response;
                 }
             }
-            var passwordMatch = await _context.Userss.FirstOrDefaultAsync(u => u.PasswordHash == data.Password);
-            if (passwordMatch == null)
+            var passwordMatch = await _userManager.CheckPasswordAsync(userFound, data.Password);
+            if (!passwordMatch)
             {
                 return response;
             }

@@ -12,7 +12,7 @@ using src.Data;
 namespace Hospital.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250425121522_InitialMigrate")]
+    [Migration("20250427073236_InitialMigrate")]
     partial class InitialMigrate
     {
         /// <inheritdoc />
@@ -110,13 +110,6 @@ namespace Hospital.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "123",
-                            RoleId = "321"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -162,14 +155,6 @@ namespace Hospital.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "321",
-                            Name = "sudo",
-                            NormalizedName = "SUDO"
-                        });
                 });
 
             modelBuilder.Entity("src.Domain.User", b =>
@@ -234,22 +219,6 @@ namespace Hospital.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "123",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "poto",
-                            Email = "sudo@gmail.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            PasswordHash = "123456",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "poto",
-                            TwoFactorEnabled = false,
-                            UserName = "sudo"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -141,3 +141,4 @@
 /home/ismael/Documents/GitHub/fullstack-aspnetcore-angular/backend/src/obj/Debug/net9.0/Hospital.pdb
 /home/ismael/Documents/GitHub/fullstack-aspnetcore-angular/backend/src/obj/Debug/net9.0/Hospital.genruntimeconfig.cache
 /home/ismael/Documents/GitHub/fullstack-aspnetcore-angular/backend/src/obj/Debug/net9.0/ref/Hospital.dll
+/home/ismael/Documents/GitHub/fullstack-aspnetcore-angular/backend/src/obj/Debug/net9.0/Hospital.sourcelink.json
