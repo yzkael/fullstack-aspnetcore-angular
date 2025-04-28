@@ -62,6 +62,7 @@ namespace src.Extensions
             services.AddScoped<AppDbInitialiser>();
             services.AddScoped<ITokenServices, TokenServices>();
             services.AddScoped<IAuthServices, AuthServices>();
+            services.AddScoped<IPatientServices, PatientServices>();
         }
         public static void AddCorsConfig(this IServiceCollection services)
         {

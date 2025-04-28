@@ -13,6 +13,7 @@ import { RegisterResponse } from '../../common/authInterfaces/registerResponse';
 export class AuthService {
   constructor(private http:HttpClient) { }
   private apiUrl = environment.apiUrl;
+  
 
   loginRequest(data:LoginRequest):Observable<LoginResponse>{
     return this.http.post<LoginResponse>(`${this.apiUrl}/api/auth/login`,data);
@@ -22,5 +23,9 @@ export class AuthService {
     return this.http.post<RegisterResponse>(`${this.apiUrl}/api/auth/register`,data);
   }
 
+  logoutRequest(){
+    localStorage.removeItem(environment.rolesLocalStorage);
+    localStorage.removeItem(environment.tokenLocalStorage);
+  }
 
 }

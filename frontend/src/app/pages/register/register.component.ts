@@ -1,12 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { AuthService } from '../../services/authServices/auth.service';
 import { Router } from '@angular/router';
 import { RegisterRequest } from '../../common/authInterfaces/registerRequest';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,CommonModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -26,18 +27,38 @@ export class RegisterComponent implements OnInit {
     email: ""
   }
 
-  registerForm:FormGroup = new FormGroup({
-    username: new FormControl("",[Validators.required]),
-    password: new FormControl("",[Validators.required]),
-    confirmPassword: new FormControl("",[Validators.required]),
-    email: new FormControl("",[Validators.required])
-  })
+  passwordMatch = (control: AbstractControl): ValidationErrors | null => {
+    const password = control.get('password')?.value;
+    const confirmPassword = control.get('confirmPassword')?.value;
+    if (password === confirmPassword) {
+      return null;
+    } else {
+      return { mismatch: true };
+    }
+  }
+
+  registerForm: FormGroup = new FormGroup({
+    username: new FormControl("", [Validators.required]),
+    password: new FormControl("", [Validators.required]),
+    confirmPassword: new FormControl("", [Validators.required]),
+    email: new FormControl("", [Validators.required])
+  }, { validators: this.passwordMatch });
+
+ 
 
   onSubmit(){
+    console.log(this.registerForm.value)
     if(this.registerForm.valid){
       this.authServices.registerRequest(this.registerForm.value).subscribe({
-        next:(response)=>{},
-        error:(err)=>{}
+        next:(response)=>{
+          console.log(response);
+          alert("User registered correctly!")
+          this.router.navigateByUrl('/login')
+        },
+        error:(err)=>{
+          console.log(err);
+          alert("Registration Failed.\nTry it again later.")
+        }
       })
     }
   }

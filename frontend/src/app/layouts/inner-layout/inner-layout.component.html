@@ -1,0 +1,9 @@
+<div class="w-full h-[15vh] bg-green-500 flex justify-around">
+    <!-- Left side -->
+     <a href="" class="flex h-full justify-center items-center"><img src="favicon.ico" alt="" class="size-20"></a>
+     <nav class="flex items-center justify-between gap-10 text-white text-xl font-semibold">
+        <a routerLink="create-patient">Create</a>
+        <button (click)="onLogoutPress()" class="cursor-pointer">Logout</button>         
+    </nav>
+</div>
+<router-outlet/>

@@ -105,6 +105,14 @@ namespace src.Data
                 {
                     throw new Exception($"Role assignment failed: {string.Join(", ", addToRoleResult.Errors.Select(e => e.Description))}");
                 }
+                // Create user Role
+                var userRole = new Role
+                {
+                    Name = "user",
+                    NormalizedName = "USER"
+                };
+                var createdUserRole = await _roleManager.CreateAsync(userRole);
+                await _context.SaveChangesAsync();
             }
         }
     }

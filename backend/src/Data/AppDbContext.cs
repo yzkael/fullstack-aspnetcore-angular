@@ -23,9 +23,8 @@ namespace src.Data
             .Property(u => u.Id)
             .ValueGeneratedOnAdd();
             base.OnModelCreating(builder);
-
         }
-
+        public DbSet<Patient> Patients { get; set; } = null!;
 
     }
 }

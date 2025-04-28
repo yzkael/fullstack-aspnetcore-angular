@@ -6,6 +6,7 @@ import { SudoComponent } from './pages/sudo/sudo.component';
 import { authGuard } from './services/authServices/authGuard/auth.guard';
 import { UserComponent } from './pages/user/user.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { InnerLayoutComponent } from './layouts/inner-layout/inner-layout.component';
 
 export const routes: Routes = [
     {
@@ -14,16 +15,24 @@ export const routes: Routes = [
         pathMatch: "full"
     },
     {
-        path:"login",
-        component:LoginComponent
+        path:"",
+        component:MainLayoutComponent,
+        children:[
+            {
+                path:"login",
+                component:LoginComponent,
+            },
+            {
+                path:"register",
+                component:RegisterComponent,
+
+            },
+        ]
     },
-    {
-        path:"register",
-        component:RegisterComponent
-    },
+    
     {
         path:"",
-        component: MainLayoutComponent,
+        component: InnerLayoutComponent,
         children:[
             {
                 path:"dashboard",
