@@ -1,3 +1,1 @@
-export interface RegisterResponse{
-
-}
+export interface RegisterResponse{ }

@@ -2,7 +2,10 @@
     <!-- Left side -->
      <a href="" class="flex h-full justify-center items-center"><img src="favicon.ico" alt="" class="size-20"></a>
      <nav class="flex items-center justify-between gap-10 text-white text-xl font-semibold">
-        <a routerLink="create-patient">Create</a>
+        <a routerLink="user">User</a>
+        @if (hasRole("admin") || hasRole("sudo")) {
+            <a routerLink="admin">Admin</a>
+        }
         <button (click)="onLogoutPress()" class="cursor-pointer">Logout</button>         
     </nav>
 </div>

@@ -1,13 +1,10 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
-import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { SudoComponent } from './pages/sudo/sudo.component';
 import { authGuard } from './services/authServices/authGuard/auth.guard';
-import { UserComponent } from './pages/user/user.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { InnerLayoutComponent } from './layouts/inner-layout/inner-layout.component';
-
+import { InnerLayoutComponent } from './common/layouts/inner-layout/inner-layout.component';
+import { MainLayoutComponent } from './common/layouts/main-layout/main-layout.component';
 export const routes: Routes = [
     {
         path:"",
@@ -41,17 +38,14 @@ export const routes: Routes = [
                 data:{roles: ["sudo","user"]}
             },
             {
-                path:"sudo",
-                component:SudoComponent,
-                canActivate:[authGuard],
-                data:{roles : ["sudo"]}
+                path:"user",
+                loadChildren: ()=> import("./pages/user/user.module").then(m=>m.UserModule)
             },
             {
-                path:"user",
-                component:UserComponent,
-                canActivate:[authGuard],
-                data:{roles : ["user"]}
+                path:"admin",
+                loadChildren: ()=> import("./pages/admin/admin.module").then(m=> m.AdminModule)
             }
+          
 
         ]
     }
