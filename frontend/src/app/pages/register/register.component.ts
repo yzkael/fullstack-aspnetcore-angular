@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 export class RegisterComponent implements OnInit {
   authServices = inject(AuthService)
   router = inject(Router)
+  isSubmit = false;
 
 
   ngOnInit(): void {
@@ -41,13 +42,14 @@ export class RegisterComponent implements OnInit {
     username: new FormControl("", [Validators.required]),
     password: new FormControl("", [Validators.required]),
     confirmPassword: new FormControl("", [Validators.required]),
-    email: new FormControl("", [Validators.required])
+    email: new FormControl("", [Validators.required, Validators.email])
   }, { validators: this.passwordMatch });
 
  
 
   onSubmit(){
-    console.log(this.registerForm.value)
+    this.isSubmit = true;
+    console.log(this.registerForm)
     if(this.registerForm.valid){
       this.authServices.registerRequest(this.registerForm.value).subscribe({
         next:(response)=>{
