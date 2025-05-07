@@ -9,5 +9,7 @@ namespace src.Interfaces
     public interface ITokenServices
     {
         public Task<string> CreateToken(User user);
+
+        public string DecodeTokenAndGetUsername(string token);
     }
 }

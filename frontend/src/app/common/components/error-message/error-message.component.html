@@ -1,0 +1,19 @@
+@if (shouldShowError) {
+<small class="text-lg text-red-500 font-bold">
+  @if ((control?.errors?.['required'])) {
+  <ng-container> *This field is required. </ng-container>
+  } @else if (control?.errors?.['patern']) {
+  <ng-container> *Invalid format. </ng-container>
+  } @else if(control?.errors?.["email"]){
+  <ng-container> *Please enter a valid email. </ng-container>
+  } @else if (control?.errors?.['minlength']) {
+  <ng-container>
+    *Minimum length is {{ control?.errors?.['minlength']?.requiredLength }}.
+  </ng-container>
+  } @else if(control?.errors?.['maxlength']){
+  <ng-container>
+    *Maximum length is {{ control?.errors?.['maxlength']?.requiredLength }}.
+  </ng-container>
+  }
+</small>
+}

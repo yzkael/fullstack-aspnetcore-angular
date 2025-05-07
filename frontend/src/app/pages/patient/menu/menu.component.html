@@ -1,0 +1,11 @@
+<div class="w-full min-h-screen flex flex-col">
+    <div class="w-full flex justify-around items-center">
+        <a routerLink="/patient/create">Crear Patients</a>
+    </div>
+</div>
+<div>
+@for (item of patients; track item.name) {
+    <app-patientcard [name]="item.name" [lastName]="item.lastName">
+        
+    </app-patientcard>}
+</div>

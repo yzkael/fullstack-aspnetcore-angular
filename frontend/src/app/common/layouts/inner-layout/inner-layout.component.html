@@ -1,7 +1,8 @@
 <div class="w-full h-[15vh] bg-green-500 flex justify-around">
     <!-- Left side -->
-     <a href="" class="flex h-full justify-center items-center"><img src="favicon.ico" alt="" class="size-20"></a>
+     <a routerLink="dashboard" class="flex h-full justify-center items-center"><img src="favicon.ico" alt="" class="size-20"></a>
      <nav class="flex items-center justify-between gap-10 text-white text-xl font-semibold">
+        <a routerLink="patient">Patients</a>
         <a routerLink="user">User</a>
         @if (hasRole("admin") || hasRole("sudo")) {
             <a routerLink="admin">Admin</a>

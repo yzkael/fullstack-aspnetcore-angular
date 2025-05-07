@@ -30,21 +30,18 @@ export const routes: Routes = [
     {
         path:"",
         component: InnerLayoutComponent,
+        canActivate: [authGuard],
+        data:{roles: ["sudo","user"]},
         children:[
             {
                 path:"dashboard",
                 component:DashboardComponent,
-                canActivate: [authGuard],
-                data:{roles: ["sudo","user"]}
             },
             {
-                path:"user",
-                loadChildren: ()=> import("./pages/user/user.module").then(m=>m.UserModule)
+                path:"",
+                loadChildren: ()=>import("./pages/routing.module").then( m=> m.RoutingModule)
             },
-            {
-                path:"admin",
-                loadChildren: ()=> import("./pages/admin/admin.module").then(m=> m.AdminModule)
-            }
+           
           
 
         ]

@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { LoginRequest } from '../../common/authInterfaces/loginRequest';
+import { LoginRequest } from '../../common/types/authInterfaces/loginRequest';
 import { AuthService } from '../../services/authServices/auth.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';

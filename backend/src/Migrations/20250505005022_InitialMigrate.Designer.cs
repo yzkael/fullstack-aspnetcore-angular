@@ -12,7 +12,7 @@ using src.Data;
 namespace Hospital.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250428063127_InitialMigrate")]
+    [Migration("20250505005022_InitialMigrate")]
     partial class InitialMigrate
     {
         /// <inheritdoc />

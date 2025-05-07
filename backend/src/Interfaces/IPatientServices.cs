@@ -9,5 +9,9 @@ namespace src.Interfaces
     public interface IPatientServices
     {
         public Task<List<Patient>> GetAllPatients(QueryObject query);
+
+        public Task<Patient?> CreatePatient(Patient patient);
+
+        public Task<Patient?> GetPatientById(string id);
     }
 }

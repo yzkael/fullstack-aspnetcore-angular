@@ -1,30 +1,51 @@
 <div class="w-full min-h-screen bg-green-900">
-    <!-- Container -->
-     <div class="w-full min-h-screen flex justify-center items-center">
-        <!-- Form container -->
-         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="flex flex-col justify-center items-center gap-5">
-            <label class="text-white font-bold text-xl">Username</label>
-            <input type="text" class="px-4 py-2 bg-white rounded-lg" formControlName="username">
-            @if (registerForm.get("username")?.invalid && (isSubmit || registerForm.get("username")?.dirty)) {
-               <small class="text-lg text-red-500 font-bold">*Username is required.</small>
-            }
-            <label class="text-white font-bold text-xl">Email</label>
-            <input type="text" class="px-4 py-2 bg-white rounded-lg" formControlName="email">
-            @if (registerForm.get('email')?.invalid && (isSubmit || registerForm.get('email')?.dirty)) {
-               <div class="mt-1 text-sm text-red-600 space-y-1">
-                 @if (registerForm.get('email')?.hasError('required')) {
-                   <small class="block">*Email is required.</small>
-                 }
-                 @if (registerForm.get('email')?.hasError('email') && !registerForm.get('email')?.hasError('required')) {
-                   <small class="block">*Please enter a valid email address.</small>
-                 }
-               </div>
-             }
-            <label class="text-white font-bold text-xl">Password</label>
-            <input type="password" class="px-4 py-2 bg-white rounded-lg" formControlName="password">
-            <label class="text-white font-bold text-xl">Confirm Password</label>
-            <input type="password" class="px-4 py-2 bg-white rounded-lg" formControlName="confirmPassword">
-            <button  class="px-4 py-2 rounded-full bg-green-700 hover:bg-green-200 hover:text-black cursor-pointer text-white font-bold hover:scale-125 transition-all mt-4 disabled:bg-gray-600" type="submit" [disabled]="registerForm.valid" >Register</button>
-         </form>
-     </div>
+  <!-- Container -->
+  <div class="w-full min-h-screen flex justify-center items-center">
+    <!-- Form container -->
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
+      class="flex flex-col justify-center items-center gap-5"
+    >
+      <label class="text-white font-bold text-xl">Username</label>
+      <input
+        type="text"
+        class="px-4 py-2 bg-white rounded-lg"
+        formControlName="username"
+      />
+      <app-error-message
+        [control]="registerForm.get('username')"
+        [isSubmit]="submit"
+      />
+      <label class="text-white font-bold text-xl">Email</label>
+      <input
+        type="text"
+        class="px-4 py-2 bg-white rounded-lg"
+        formControlName="email"
+      />
+      <app-error-message
+        [control]="registerForm.get('email')"
+        [isSubmit]="submit"
+      />
+      <label class="text-white font-bold text-xl">Password</label>
+      <input
+        type="password"
+        class="px-4 py-2 bg-white rounded-lg"
+        formControlName="password"
+      />
+      <label class="text-white font-bold text-xl">Confirm Password</label>
+      <input
+        type="password"
+        class="px-4 py-2 bg-white rounded-lg"
+        formControlName="confirmPassword"
+      />
+      <button
+        class="px-4 py-2 rounded-full bg-green-700 hover:bg-green-200 hover:text-black cursor-pointer text-white font-bold hover:scale-125 transition-all mt-4 disabled:bg-gray-600"
+        type="submit"
+        [disabled]="registerForm.valid"
+      >
+        Register
+      </button>
+    </form>
+  </div>
 </div>
